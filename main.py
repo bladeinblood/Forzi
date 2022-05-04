@@ -49,4 +49,4 @@ async def mute(ctx, message, member: discord.Member):
   e3 = discord.Embed(title = 'Embed 3', description = 'embed woho')
   
   
-client.run('token here')
+client.run('OTcxMzczNTIxNzI3MDEyODc0.YnJkFg.jc6x5BKnsbu4dNdp-nkhPaGz9R0')
