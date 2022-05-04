@@ -38,4 +38,4 @@ async def mute(ctx):
   await responce.respond(content = "hello my dear frined")
   
   
-client.run('OTcxMzczNTIxNzI3MDEyODc0.YnJkFg.Gw9GHYVvKlSONhGoN-5mME2OE64')
+client.run('OTcxMzczNTIxNzI3MDEyODc0.YnJkFg.rrb0XYIQEf1OXUSBuJyQ1XGphC8')
