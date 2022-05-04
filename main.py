@@ -1,3 +1,4 @@
+from urllib import response
 import discord
 from discord.ext import commands
 from discord_components import *
@@ -11,6 +12,7 @@ client.remove_command('help')
 @client.event
 async def on_ready():
   print('Bot connect')
+  DiscordComponents(client)
   
 @client.command()
 async def ban(ctx, member: discord.Member, message, reason = None):
@@ -18,35 +20,22 @@ async def ban(ctx, member: discord.Member, message, reason = None):
   await asyncio.sleep(2)
   await ctx.message.delete()
   await member.ban(reason=reason)
+
   
 @client.command()
-async def mute(ctx, message, member: discord.Member):
+async def mute(ctx):
   await ctx.send("Test Select Menu", 
-  components =
-  [Select(placeholder = "Choose what you want to see!",
+  components = [Select(placeholder = "roles",
          options = [
-            SelectOption(
-              label = "Option 1",
-              value = "Option 1, woho",
-              description = "Option 1, my dear developer",
-              emoji = '😀'
-            ),
-           SelectOption(
-              label = "Option 2",
-              value = "Option 2, woho",
-              description = "Option 2, my dear developer",
-              emoji = '😀'
-            ),
-           SelectOption(
-              label = "Option 3",
-              value = "Option 3, woho",
-              description = "Option 3, my dear developer",
-              emoji = '😀'
-            ),
-         ])])
-  e1 = discord.Embed(title = 'Embed 1', description = 'embed woho')
-  e2 = discord.Embed(title = 'Embed 2', description = 'embed woho')
-  e3 = discord.Embed(title = 'Embed 3', description = 'embed woho')
+            SelectOption(label = role.name, value = role.id, emoji = None, description=role.id) for role in ctx.guild.roles if role.name.lower() == "mute"
+         ] + [
+           SelectOption(label="you", value="you")
+         ]
+  )])
+  
+
+  responce = await client.wait_for("select_option", check=None)
+  await responce.respond(content = "hello my dear frined")
   
   
-client.run('OTcxMzczNTIxNzI3MDEyODc0.YnJkFg.jc6x5BKnsbu4dNdp-nkhPaGz9R0')
+client.run('OTcxMzczNTIxNzI3MDEyODc0.YnJkFg.Gw9GHYVvKlSONhGoN-5mME2OE64')
