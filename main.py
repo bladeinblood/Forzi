@@ -23,7 +23,7 @@ async def ban(ctx, member: discord.Member, message, reason = None):
 
   
 @client.command()
-async def mute(ctx):
+async def mute(ctx, member: discord.Member):
   await ctx.send("Test Select Menu", 
   components = [Select(placeholder = "roles",
          options = [
@@ -33,9 +33,11 @@ async def mute(ctx):
          ]
   )])
   
+  role = discord.utils.get(ctx.guild.roles, name=label)
+  await member.add_role(role)
 
   responce = await client.wait_for("select_option", check=None)
-  await responce.respond(content = "hello my dear frined")
+  await responce.respond(content = f"{member.mention} was muted")
   
   
 client.run('OTcxMzczNTIxNzI3MDEyODc0.YnJkFg.rrb0XYIQEf1OXUSBuJyQ1XGphC8')
